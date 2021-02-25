@@ -11,7 +11,8 @@ class PrefsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('prefs') -> insert ([
+        DB::table('prefs')->delete();
+        DB::table('prefs') -> insert([
             ['id' => 1, 'name' => '北海道'],
             ['id' => 2, 'name' => '青森'],
             ['id' => 3, 'name' => '岩手県'],
