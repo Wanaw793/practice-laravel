@@ -11,7 +11,4 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-    return view('index', 'CustomersController@index');
-});
+Route::get('index', 'CustomersController@index')->name('practice');
