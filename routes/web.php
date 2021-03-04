@@ -11,4 +11,4 @@
 |
 */
 
-Route::get('index', 'CustomersController@index')->name('practice');
+Route::get('index', 'CustomersController@getIndex')->name('');
