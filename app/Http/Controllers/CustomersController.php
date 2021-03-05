@@ -19,5 +19,43 @@ class CustomersController extends Controller
         $first_kana = $request->input('first_kana');
         $gender = $request->input('gender');
         $pref_id = $request->input('pref_id');
+
+
+    }
+
+    //新規登録画面の表示
+    public function create()
+    {
+
+    }
+
+    //詳細画面の表示
+    public function detail ()
+    {
+
+    }
+
+    //編集画面の表示
+    public function edit ()
+    {
+
+    }
+
+    //新規登録画面で登録
+    public function store ()
+    {
+
+    }
+
+    //編集画面で更新
+    public function update ()
+    {
+
+    }
+
+    //詳細画面で削除
+    public function delete ()
+    {
+
     }
 }
