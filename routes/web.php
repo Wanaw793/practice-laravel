@@ -11,11 +11,11 @@
 |
 */
 
-Route::get('index', 'CustomersController@getIndex')->name('');
-Route::get('/', 'CustomersController@getIndex')->name('search');
-Route::post('create', 'CustomersController@create')->name('');
-Route::get('detail', 'CustomersController@detail')->name('');
-Route::get('edit', 'CustomersController@edit')->name('');
-Route::get('store', 'CustomersController@store')->name('');
-Route::get('update', 'CustomersController@update')->name('');
-Route::get('delete', 'CustomersController@delete')->name('');
+Route::get('', 'CustomersController@getIndex')->name('index');
+Route::post('index', 'CustomersController@getIndex')->name('search');
+Route::post('create', 'CustomersController@create')->name('create');
+Route::get('detail', 'CustomersController@detail')->name('detail');
+Route::get('edit', 'CustomersController@edit')->name('edit');
+Route::get('store', 'CustomersController@store')->name('store');
+Route::post('update', 'CustomersController@update')->name('update');
+Route::post('delete', 'CustomersController@delete')->name('delete');

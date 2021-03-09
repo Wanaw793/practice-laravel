@@ -44,18 +44,23 @@ class CustomersController extends Controller
     //新規登録画面で登録
     public function store ()
     {
-        return view
+        $inputs = \Request::all();
+        Customers::create($inputs);
+
+        return view ('index');
     }
 
     //編集画面で更新
     public function update ()
     {
-
+        return redirect ('update');
     }
 
     //詳細画面で削除
     public function delete ()
     {
+        //リダイレクト
+        return redirect ('delete');
 
     }
 }
