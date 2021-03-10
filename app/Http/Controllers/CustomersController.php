@@ -36,8 +36,9 @@ class CustomersController extends Controller
     }
 
     //編集画面の表示
-    public function edit ()
+    public function edit ($id)
     {
+        $customer = Customer::findOrFail($id);
         return view ('edit');
     }
 
@@ -45,22 +46,25 @@ class CustomersController extends Controller
     public function store ()
     {
         $inputs = \Request::all();
-        Customers::create($inputs);
+        Customer::create($inputs);
 
         return view ('index');
     }
 
     //編集画面で更新
-    public function update ()
+    public function update (Request $request, $id)
     {
-        return redirect ('update');
+        $customer = Customer::findOrFail($id);
+        return redirect ('index');
     }
 
     //詳細画面で削除
-    public function delete ()
+    public function delete ($id)
     {
-        //リダイレクト
-        return redirect ('delete');
+        $customer = Customer::findOrFail($id);
+
+        $customer->delete();
+        return redirect ('index');
 
     }
 }
