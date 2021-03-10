@@ -13,7 +13,7 @@
 
 Route::get('', 'CustomersController@getIndex')->name('index');
 Route::post('index', 'CustomersController@getIndex')->name('search');
-Route::post('create', 'CustomersController@create')->name('create');
+Route::get('create', 'CustomersController@create')->name('create');
 Route::get('detail', 'CustomersController@detail')->name('detail');
 Route::get('edit', 'CustomersController@edit')->name('edit');
 Route::get('store', 'CustomersController@store')->name('store');

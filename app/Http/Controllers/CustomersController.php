@@ -48,7 +48,7 @@ class CustomersController extends Controller
         $inputs = \Request::all();
         Customer::create($inputs);
 
-        return view ('index');
+        return redirect ('index');
     }
 
     //編集画面で更新
