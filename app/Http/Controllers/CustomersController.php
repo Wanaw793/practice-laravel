@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Customer;
 use Illuminate\Http\Request;
+
 
 class CustomersController extends Controller
 {
@@ -43,17 +45,18 @@ class CustomersController extends Controller
     }
 
     //新規登録画面で登録
-    public function store ()
+    public function store (Request $request)
     {
-        $inputs = \Request::all();
+        $inputs = $request::all();
         Customer::create($inputs);
 
         return redirect ('index');
     }
 
     //編集画面で更新
-    public function update (Request $request, $id)
+    public function update (Request $request)
     {
+        $id = $request->id;
         $customer = Customer::findOrFail($id);
         return redirect ('index');
     }

@@ -17,7 +17,7 @@
         <header>
             <div class="navbar navbar-dark bg-dark shadow-sm">
                 <div class="container d-flex justify-content-between">
-                    <a href="index.html" class="navbar-brand d-flex align-items-center">
+                    <a href="index.blade.php" class="navbar-brand d-flex align-items-center">
                         <strong>顧客管理</strong>
                     </a>
                 </div>
@@ -32,7 +32,8 @@
                     </div>
 
                     <div style="margin-bottom:20px;">
-                        <form id="form" method="post" action="index.html">
+                        <form id="form" method="post" action="index.blade.php">
+                            @csrf
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group row">
@@ -81,7 +82,7 @@
                             【メッセージサンプル】該当データが見つかりません。
                         </div>
                         <div class="form-group row">
-                            <a  class="btn btn-success" href="create.html" style="width:150px"><i class="fas fa-chalkboard-teacher pr-1"></i> 新規登録</a>
+                            <a  class="btn btn-success" href="create.blade.php" style="width:150px"><i class="fas fa-chalkboard-teacher pr-1"></i> 新規登録</a>
                         </div>
                     </div>
 
@@ -107,7 +108,7 @@
                             <tbody id="content">
                                 <tr>
                                     <td scope="col">1</td>
-                                    <td scope="col"><a href="detail.html">苗字　名前</a></td>
+                                    <td scope="col"><a href="detail.blade.php">苗字　名前</a></td>
                                     <td scope="col">みょうじ なまえ</td>
                                     <td scope="col">男</td>
                                     <td scope="col">1973/01/24</td>
@@ -118,11 +119,11 @@
                                     <td scope="col">bobtabo.buhibuhi@gmail.com</td>
                                     <td scope="col">2020/08/30　23：12：34</td>
                                     <td scope="col">2020/08/30　23：12：34</td>
-                                    <td scope="col"><a class="btn btn-info" href="edit.html">編集</a></td>
+                                    <td scope="col"><a class="btn btn-info" href="edit.blade.php">編集</a></td>
                                 </tr>
                                 <tr>
                                     <td scope="col">1</td>
-                                    <td scope="col"><a href="detail.html">苗字　名前</a></td>
+                                    <td scope="col"><a href="detail.blade.php">苗字　名前</a></td>
                                     <td scope="col">みょうじ なまえ</td>
                                     <td scope="col">男</td>
                                     <td scope="col">1973/01/24</td>
@@ -133,11 +134,11 @@
                                     <td scope="col">bobtabo.buhibuhi@gmail.com</td>
                                     <td scope="col">2020/08/30　23：12：34</td>
                                     <td scope="col">2020/08/30　23：12：34</td>
-                                    <td scope="col"><a class="btn btn-info" href="edit.html">編集</a></td>
+                                    <td scope="col"><a class="btn btn-info" href="edit.blade.php">編集</a></td>
                                 </tr>
                                 <tr>
                                     <td scope="col">1</td>
-                                    <td scope="col"><a href="detail.html">苗字　名前</a></td>
+                                    <td scope="col"><a href="detail.blade.php">苗字　名前</a></td>
                                     <td scope="col">みょうじ なまえ</td>
                                     <td scope="col">男</td>
                                     <td scope="col">1973/01/24</td>
@@ -148,11 +149,11 @@
                                     <td scope="col">bobtabo.buhibuhi@gmail.com</td>
                                     <td scope="col">2020/08/30　23：12：34</td>
                                     <td scope="col">2020/08/30　23：12：34</td>
-                                    <td scope="col"><a class="btn btn-info" href="edit.html">編集</a></td>
+                                    <td scope="col"><a class="btn btn-info" href="edit.blade.php">編集</a></td>
                                 </tr>
                                 <tr>
                                     <td scope="col">1</td>
-                                    <td scope="col"><a href="detail.html">苗字　名前</a></td>
+                                    <td scope="col"><a href="detail.blade.php">苗字　名前</a></td>
                                     <td scope="col">みょうじ なまえ</td>
                                     <td scope="col">男</td>
                                     <td scope="col">1973/01/24</td>
@@ -163,11 +164,11 @@
                                     <td scope="col">bobtabo.buhibuhi@gmail.com</td>
                                     <td scope="col">2020/08/30　23：12：34</td>
                                     <td scope="col">2020/08/30　23：12：34</td>
-                                    <td scope="col"><a class="btn btn-info" href="edit.html">編集</a></td>
+                                    <td scope="col"><a class="btn btn-info" href="edit.blade.php">編集</a></td>
                                 </tr>
                                 <tr>
                                     <td scope="col">1</td>
-                                    <td scope="col"><a href="detail.html">苗字　名前</a></td>
+                                    <td scope="col"><a href="detail.blade.php">苗字　名前</a></td>
                                     <td scope="col">みょうじ なまえ</td>
                                     <td scope="col">男</td>
                                     <td scope="col">1973/01/24</td>
@@ -178,11 +179,11 @@
                                     <td scope="col">bobtabo.buhibuhi@gmail.com</td>
                                     <td scope="col">2020/08/30　23：12：34</td>
                                     <td scope="col">2020/08/30　23：12：34</td>
-                                    <td scope="col"><a class="btn btn-info" href="edit.html">編集</a></td>
+                                    <td scope="col"><a class="btn btn-info" href="edit.blade.php">編集</a></td>
                                 </tr>
                                 <tr>
                                     <td scope="col">1</td>
-                                    <td scope="col"><a href="detail.html">苗字　名前</a></td>
+                                    <td scope="col"><a href="detail.blade.php">苗字　名前</a></td>
                                     <td scope="col">みょうじ なまえ</td>
                                     <td scope="col">男</td>
                                     <td scope="col">1973/01/24</td>
@@ -193,11 +194,11 @@
                                     <td scope="col">bobtabo.buhibuhi@gmail.com</td>
                                     <td scope="col">2020/08/30　23：12：34</td>
                                     <td scope="col">2020/08/30　23：12：34</td>
-                                    <td scope="col"><a class="btn btn-info" href="edit.html">編集</a></td>
+                                    <td scope="col"><a class="btn btn-info" href="edit.blade.php">編集</a></td>
                                 </tr>
                                 <tr>
                                     <td scope="col">1</td>
-                                    <td scope="col"><a href="detail.html">苗字　名前</a></td>
+                                    <td scope="col"><a href="detail.blade.php">苗字　名前</a></td>
                                     <td scope="col">みょうじ なまえ</td>
                                     <td scope="col">男</td>
                                     <td scope="col">1973/01/24</td>
@@ -208,11 +209,11 @@
                                     <td scope="col">bobtabo.buhibuhi@gmail.com</td>
                                     <td scope="col">2020/08/30　23：12：34</td>
                                     <td scope="col">2020/08/30　23：12：34</td>
-                                    <td scope="col"><a class="btn btn-info" href="edit.html">編集</a></td>
+                                    <td scope="col"><a class="btn btn-info" href="edit.blade.php">編集</a></td>
                                 </tr>
                                 <tr>
                                     <td scope="col">1</td>
-                                    <td scope="col"><a href="detail.html">苗字　名前</a></td>
+                                    <td scope="col"><a href="detail.blade.php">苗字　名前</a></td>
                                     <td scope="col">みょうじ なまえ</td>
                                     <td scope="col">男</td>
                                     <td scope="col">1973/01/24</td>
@@ -223,11 +224,11 @@
                                     <td scope="col">bobtabo.buhibuhi@gmail.com</td>
                                     <td scope="col">2020/08/30　23：12：34</td>
                                     <td scope="col">2020/08/30　23：12：34</td>
-                                    <td scope="col"><a class="btn btn-info" href="edit.html">編集</a></td>
+                                    <td scope="col"><a class="btn btn-info" href="edit.blade.php">編集</a></td>
                                 </tr>
                                 <tr>
                                     <td scope="col">1</td>
-                                    <td scope="col"><a href="detail.html">苗字　名前</a></td>
+                                    <td scope="col"><a href="detail.blade.php">苗字　名前</a></td>
                                     <td scope="col">みょうじ なまえ</td>
                                     <td scope="col">男</td>
                                     <td scope="col">1973/01/24</td>
@@ -238,11 +239,11 @@
                                     <td scope="col">bobtabo.buhibuhi@gmail.com</td>
                                     <td scope="col">2020/08/30　23：12：34</td>
                                     <td scope="col">2020/08/30　23：12：34</td>
-                                    <td scope="col"><a class="btn btn-info" href="edit.html">編集</a></td>
+                                    <td scope="col"><a class="btn btn-info" href="edit.blade.php">編集</a></td>
                                 </tr>
                                 <tr>
                                     <td scope="col">1</td>
-                                    <td scope="col"><a href="detail.html">苗字　名前</a></td>
+                                    <td scope="col"><a href="detail.blade.php">苗字　名前</a></td>
                                     <td scope="col">みょうじ なまえ</td>
                                     <td scope="col">男</td>
                                     <td scope="col">1973/01/24</td>
@@ -253,7 +254,7 @@
                                     <td scope="col">bobtabo.buhibuhi@gmail.com</td>
                                     <td scope="col">2020/08/30　23：12：34</td>
                                     <td scope="col">2020/08/30　23：12：34</td>
-                                    <td scope="col"><a class="btn btn-info" href="edit.html">編集</a></td>
+                                    <td scope="col"><a class="btn btn-info" href="edit.blade.php">編集</a></td>
                                 </tr>
                             </tbody>
                         </table>
