@@ -17,12 +17,10 @@ class CustomersController extends Controller
     //検索
     public function search(Request $request)
     {
-        $last_kana = $request->input('last_kana');
-        $first_kana = $request->input('first_kana');
-        $gender = $request->input('gender');
+        //$last_kana = $request->input('last_kana');
+       // $first_kana = $request->input('first_kana');
+       // $gender = $request->input('gender');
         $pref_id = $request->input('pref_id');
-
-
     }
 
     //新規登録画面の表示
@@ -38,36 +36,42 @@ class CustomersController extends Controller
     }
 
     //編集画面の表示
-    public function edit ($id)
+    public function edit (Request $request)
     {
-        $customer = Customer::findOrFail($id);
+        //$customer = Customer::findOrFail($id);
         return view ('edit');
     }
 
-    //新規登録画面で登録
+    /**
+     * Undocumented function
+     *新規登録
+     * @param Request $request
+     * @return void
+     */
     public function store (Request $request)
     {
-        $inputs = $request::all();
-        Customer::create($inputs);
+        //$inputs = $request->input();
+       // unset($input['_token']);
+       // Customer::create($inputs);
 
-        return redirect ('index');
+        return redirect()->route('index');
     }
 
     //編集画面で更新
     public function update (Request $request)
     {
-        $id = $request->id;
-        $customer = Customer::findOrFail($id);
-        return redirect ('index');
+        //$id = $request->id;
+        //$customer = Customer::findOrFail($id);
+        return redirect()->route('index');
     }
 
     //詳細画面で削除
-    public function delete ($id)
+    public function delete (Request $request)
     {
-        $customer = Customer::findOrFail($id);
+        //$customer = Customer::findOrFail($id);
 
-        $customer->delete();
-        return redirect ('index');
+        //$customer->delete();
+        return redirect()->route('index');
 
     }
 }

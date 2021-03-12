@@ -17,7 +17,7 @@
         <header>
             <div class="navbar navbar-dark bg-dark shadow-sm">
                 <div class="container d-flex justify-content-between">
-                    <a href="index.blade.php" class="navbar-brand d-flex align-items-center">
+                    <a href="{{ route('create') }}" class="navbar-brand d-flex align-items-center">
                         <strong>顧客管理（新規登録）</strong>
                     </a>
                 </div>
@@ -30,7 +30,7 @@
                     【メッセージサンプル】エラーです。
                 </div>
 
-                <form id="form" method="post" action="index.blade.php">
+                <form id="form" method="post" action="{{  route('store') }}">
                     @csrf
                     <div class="col-md-8 order-md-1">
                         <div class="row">
@@ -141,7 +141,7 @@
                 </form>
                 <hr class="mb-4">
                 <div class="form-group">
-                    <a  class="btn btn-secondary" href="index.blade.php" style="width:150px">戻る</a>
+                    <a  class="btn btn-secondary" href="{{ route('index') }}" style="width:150px">戻る</a>
                     <button id="complete" type="button" class="btn btn-success" style="width:150px"><i class="fas fa-database pr-1"></i> 登録</button>
                 </div>
             </div>
