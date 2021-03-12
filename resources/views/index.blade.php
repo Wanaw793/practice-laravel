@@ -119,7 +119,7 @@
                                     <td scope="col">bobtabo.buhibuhi@gmail.com</td>
                                     <td scope="col">2020/08/30　23：12：34</td>
                                     <td scope="col">2020/08/30　23：12：34</td>
-                                    <td scope="col"><a class="btn btn-info" href="edit.blade.php">編集</a></td>
+                                    <td scope="col"><a class="btn btn-info" href="{{  route('edit') }}">編集</a></td>
                                 </tr>
                                 <tr>
                                     <td scope="col">1</td>
