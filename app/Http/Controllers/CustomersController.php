@@ -17,9 +17,9 @@ class CustomersController extends Controller
     //検索
     public function search(Request $request)
     {
-        //$last_kana = $request->input('last_kana');
-       // $first_kana = $request->input('first_kana');
-       // $gender = $request->input('gender');
+        $last_kana = $request->input('last_kana');
+        $first_kana = $request->input('first_kana');
+        $gender = $request->input('gender');
         $pref_id = $request->input('pref_id');
     }
 
@@ -32,37 +32,45 @@ class CustomersController extends Controller
     //詳細画面の表示
     public function detail ()
     {
+        //$customer = Customer::findOrFail($id);
         return view ('detail');
     }
 
     //編集画面の表示
-    public function edit (Request $request)
+    public function edit ($id)
     {
-        //$customer = Customer::findOrFail($id);
+        $customer = Customer::findOrFail($id);
         return view ('edit');
     }
 
     /**
      * Undocumented function
-     *新規登録
+     * 新規登録
      * @param Request $request
      * @return void
      */
     public function store (Request $request)
     {
-        //$inputs = $request->input();
-       // unset($input['_token']);
-       // Customer::create($inputs);
-
+        $customer = new Customer;
+        $inputs = $request->input();
+        unset($input['_token']);
+        $inputs = save();
         return redirect()->route('index');
     }
 
-    //編集画面で更新
-    public function update (Request $request)
+    /**
+     * Undocumented function
+     * 編集画面で更新
+     * @param Request $request
+     * @param [type] $id
+     * @return void
+     */
+    public function update (Request $request, $id)
     {
-        //$id = $request->id;
-        //$customer = Customer::findOrFail($id);
-        return redirect()->route('index');
+        $id = $request->id;
+        $customer = Customer::findOrFail($id);
+        $inputs = save();
+        return redirect()->route('edit');
     }
 
     //詳細画面で削除

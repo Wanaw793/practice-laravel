@@ -14,8 +14,8 @@
 Route::get('', 'CustomersController@getIndex')->name('index');
 Route::post('', 'CustomersController@getIndex')->name('search');
 Route::get('create', 'CustomersController@create')->name('create');
-Route::get('detail', 'CustomersController@detail')->name('detail');
-Route::get('edit', 'CustomersController@edit')->name('edit');
+Route::get('detail/{id}', 'CustomersController@detail')->name('detail');
+Route::get('edit/{id}', 'CustomersController@edit')->name('edit');
 Route::post('store', 'CustomersController@store')->name('store');
 Route::post('update', 'CustomersController@update')->name('update');
-Route::get('delete', 'CustomersController@delete')->name('delete');
+Route::get('delete/{id}', 'CustomersController@delete')->name('delete');
