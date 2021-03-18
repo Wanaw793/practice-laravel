@@ -38,8 +38,8 @@ class CustomersController extends Controller
 
     //編集画面の表示
     public function edit ($id)
-    {
-        $customer = Customer::findOrFail($id);
+
+        //$customer = Customer::findOrFail($id);
         return view ('edit');
     }
 
@@ -67,9 +67,9 @@ class CustomersController extends Controller
      */
     public function update (Request $request, $id)
     {
-        $id = $request->id;
-        $customer = Customer::findOrFail($id);
-        $inputs = save();
+        //$id = $request->id;
+        //$customer = Customer::findOrFail($id);
+        //$inputs = save();
         return redirect()->route('edit');
     }
 
