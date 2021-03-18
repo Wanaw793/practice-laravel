@@ -38,7 +38,7 @@ class CustomersController extends Controller
 
     //編集画面の表示
     public function edit ($id)
-
+    {
         //$customer = Customer::findOrFail($id);
         return view ('edit');
     }
@@ -53,8 +53,8 @@ class CustomersController extends Controller
     {
         $customer = new Customer;
         $inputs = $request->input();
-        unset($input['_token']);
-        $inputs = save();
+        unset($inputs['_token']);
+        $customer->fill($inputs)->save();
         return redirect()->route('index');
     }
 
