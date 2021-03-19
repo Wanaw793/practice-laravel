@@ -9,9 +9,10 @@ use Illuminate\Http\Request;
 class CustomersController extends Controller
 {
     //一覧画面
-    public function getIndex() {
-
-        return view('index');
+    public function getIndex()
+    {
+        $customers = Customer::all();
+        return view('index', ['customer => $customers']);
     }
 
     //検索
