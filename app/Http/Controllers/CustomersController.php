@@ -12,7 +12,7 @@ class CustomersController extends Controller
     public function getIndex()
     {
         $customers = Customer::all();
-        return view('index', ['customer => $customers']);
+        return view('index', ['customer' => $customers]);
     }
 
     //検索
