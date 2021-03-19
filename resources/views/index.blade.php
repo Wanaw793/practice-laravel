@@ -109,7 +109,7 @@
                                 @foreach ($customers as $customer)
                                 <tr>
                                     <td scope="col">1</td>
-                                    <td scope="col"><a href="{{ route('detail', ['id' => 1]) }}">{{ $customers->last_name}}　名前</a></td>
+                                    <td scope="col"><a href="{{ route('detail', ['id' => 1]) }}">{{ $customer->last_name}}　名前</a></td>
                                     <td scope="col">みょうじ なまえ</td>
                                     <td scope="col">男</td>
                                     <td scope="col">1973/01/24</td>
