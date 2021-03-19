@@ -17,10 +17,10 @@ class CustomersController extends Controller
     //検索
     public function search(Request $request)
     {
-        $last_kana = $request->input('last_kana');
-        $first_kana = $request->input('first_kana');
-        $gender = $request->input('gender');
-        $pref_id = $request->input('pref_id');
+        //$last_kana = $request->input('last_kana');
+        //$first_kana = $request->input('first_kana');
+        //$gender = $request->input('gender');
+        //$pref_id = $request->input('pref_id');
     }
 
     //新規登録画面の表示
