@@ -111,7 +111,7 @@
                                     <td scope="col">1</td>
                                     <td scope="col"><a href="{{ route('detail', ['id' => 1]) }}">{{ $customer->last_name }}　名前</a></td>
                                     <td scope="col">{{ $customer->kana_name }}みょうじ なまえ</td>
-                                    <td scope="col">{{ $customer->gender, '男'->1, '女'->2 }}男</td>
+                                    <td scope="col">{{ $customer->gender, [1=>'男', 2=>'女'] }}男</td>
                                     <td scope="col">{{ $customer->date('Y-m-d') }}1973/01/24</td>
                                     <td scope="col">{{ $customer->post_code }}123-4567</td>
                                     <td scope="col">{{ $customer->pref_name }}</td>
