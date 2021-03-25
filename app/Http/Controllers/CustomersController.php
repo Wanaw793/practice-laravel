@@ -31,14 +31,14 @@ class CustomersController extends Controller
     }
 
     //詳細画面の表示
-    public function detail ()
+    public function detail (Request $request)
     {
-        //$customer = Customer::findOrFail($id);
-        return view ('detail');
+        $customer = Customer::findOrFail($request->id);
+        return view ('detail', ['customer' => $customer]);
     }
 
     //編集画面の表示
-    public function edit ($id)
+    public function edit (Request $request)
     {
         //$customer = Customer::findOrFail($id);
         return view ('edit');
@@ -66,7 +66,7 @@ class CustomersController extends Controller
      * @param [type] $id
      * @return void
      */
-    public function update (Request $request, $id)
+    public function update (Request $request)
     {
         //$id = $request->id;
         //$customer = Customer::findOrFail($id);

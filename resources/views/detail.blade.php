@@ -59,7 +59,7 @@
                     <div class="row">
                         <div class="col-md-3 mb-3">
                             <label for="birthday">生年月日</label>
-                            <input type="date" class="form-control" name="birthday" placeholder="生年月日" value="{{ $customer->birthday->format('Y/m/d') }}" readonly>
+                            <input type="date" class="form-control" name="birthday" placeholder="生年月日" value="{{ $customer->birthday->format('Y-m-d') }}" readonly>
                         </div>
                     </div>
 
@@ -115,7 +115,7 @@
                     <div class="row">
                         <div class="col-md-8 mb-3">
                             <label for="remarks">備考</label>
-                            <textarea class="form-control" aria-label="With textarea" name="remarks" readonly></textarea>
+                            <textarea class="form-control" aria-label="With textarea" name="remarks" readonly>{{ $customer->remarks }}</textarea>
                         </div>
                     </div>
                 </div>
