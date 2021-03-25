@@ -135,7 +135,7 @@
             $("#complete").click(function() {
                 completeConfirm(function(result){
                     if (result) {
-                        location.replace("{{  route('delete') }}");
+                        location.replace("{{  route('delete', ['id' => 1]) }}");
                     }
                 });
             });
