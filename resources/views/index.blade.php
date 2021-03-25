@@ -109,10 +109,10 @@
                                 @foreach ($customers as $customer)
                                 <tr>
                                     <td scope="col">1</td>
-                                    <td scope="col"><a href="{{ route('detail', [$customer->last_name]) }}">　名前</a></td>
-                                    <td scope="col">{{ $customer->kana_name }} なまえ</td>
+                                    <td scope="col"><a href="{{ route('detail', ['id' => $customer->id]) }}">{{ $customer->last_name, $customer->first_name }}　名前</a></td>
+                                    <td scope="col">{{ $customer->last_kana, $customer->first_kana }} </td>
                                     <td scope="col">{{ $customer->gender == 1 ? '男' : '女' }}</td>
-                                    <td scope="col">{{ $customer->birthday('Y-m-d') }}</td>
+                                    <td scope="col">{{ $customer->birthday->format('Y/m/d') }}</td>
                                     <td scope="col">{{ $customer->post_code }}</td>
                                     <td scope="col">{{ $customer->pref_name }}</td>
                                     <td scope="col">{{ $customer->tel }}</td>
@@ -120,7 +120,7 @@
                                     <td scope="col">{{ $customer->email }}</td>
                                     <td scope="col">{{ $customer->created_at }}</td>
                                     <td scope="col">{{ $customer->updated_at }}</td>
-                                    <td scope="col"><a class="btn btn-info" href="{{  route('edit', [$customer->id]) }}">}編集</a></td>
+                                    <td scope="col"><a class="btn btn-info" href="{{  route('edit', ['id' => $customer->id]) }}">{{ $customer->id }}編集</a></td>
                                 </tr>
                                 @endforeach
                             </tbody>
