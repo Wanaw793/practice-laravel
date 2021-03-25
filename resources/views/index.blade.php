@@ -114,7 +114,7 @@
                                     <td scope="col">{{ $customer->gender == 1 ? '男' : '女' }}</td>
                                     <td scope="col">{{ $customer->birthday->format('Y/m/d') }}</td>
                                     <td scope="col">{{ $customer->post_code }}</td>
-                                    <td scope="col">{{ $customer->pref_name }}</td>
+                                    <td scope="col">{{ $customer->pref->name }}</td>
                                     <td scope="col">{{ $customer->tel }}</td>
                                     <td scope="col">{{ $customer->mobile }}</td>
                                     <td scope="col">{{ $customer->email }}</td>
