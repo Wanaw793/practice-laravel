@@ -80,14 +80,14 @@
                     <div class="row">
                         <div class="col-md-5 mb-3">
                             <label for="address">住所</label>
-                            <input type="text" class="form-control" name="address" placeholder="渋谷区道玄坂2丁目11-1" value="青森市長島一丁目1-1" readonly>
+                            <input type="text" class="form-control" name="address" placeholder="渋谷区道玄坂2丁目11-1" value="{{ $customer->address }}" readonly>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-5 mb-3">
                             <label for="building">建物名</label>
-                            <input type="text" class="form-control" name="building" placeholder="Ｇスクエア渋谷道玄坂 4F" value="{{ $customer->address }}" readonly>
+                            <input type="text" class="form-control" name="building" placeholder="Ｇスクエア渋谷道玄坂 4F" value="{{ $customer->building }}" readonly>
                         </div>
                     </div>
 
