@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Customer;
 use Illuminate\Http\Request;
+use App\Pref;
 
 
 class CustomersController extends Controller
@@ -27,21 +28,22 @@ class CustomersController extends Controller
     //新規登録画面の表示
     public function create()
     {
-        return view ('create');
+        return view('create');
     }
 
     //詳細画面の表示
-    public function detail (Request $request)
+    public function detail(Request $request)
     {
         $customer = Customer::findOrFail($request->id);
-        return view ('detail', ['customer' => $customer]);
+        return view('detail', ['customer' => $customer]);
     }
 
     //編集画面の表示
-    public function edit (Request $request)
+    public function edit(Request $request)
     {
+        $prefs = Pref::all();
         $customer = Customer::findOrFail($request->id);
-        return view ('edit', ['customer' => $customer]);
+        return view('edit', ['customer' => $customer], ['prefs' => $prefs]);
     }
 
     /**
@@ -50,7 +52,7 @@ class CustomersController extends Controller
      * @param Request $request
      * @return void
      */
-    public function store (Request $request)
+    public function store(Request $request)
     {
         $customer = new Customer;
         $inputs = $request->input();
@@ -66,17 +68,17 @@ class CustomersController extends Controller
      * @param [type] $id
      * @return void
      */
-    public function update (Request $request)
+    public function update(Request $request)
     {
-        //$id = $request->id;
-        //unset($inputs['_token']);
-        //$customer = Customer::findOrFail($id);
-        //$customer->fill($id)->save();
-        return redirect()->route('edit');
+        $id = $request->id;
+        unset($id['_token']);
+        $customer = Customer::findOrFail($request->$id);
+        $customer->fill($id)->save();
+        return redirect()->route('index');
     }
 
     //詳細画面で削除
-    public function delete (Request $request)
+    public function delete(Request $request)
     {
         //$customer = Customer::findOrFail($id);
 

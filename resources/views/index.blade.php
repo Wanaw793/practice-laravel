@@ -120,7 +120,7 @@
                                     <td scope="col">{{ $customer->email }}</td>
                                     <td scope="col">{{ $customer->created_at }}</td>
                                     <td scope="col">{{ $customer->updated_at }}</td>
-                                    <td scope="col"><a class="btn btn-info" href="{{  route('edit', ['id' => $customer->id]) }}">{{ $customer->id }}編集</a></td>
+                                    <td scope="col"><a class="btn btn-info" href="{{  route('edit', ['id' => $customer->id]) }}">編集</a></td>
                                 </tr>
                                 @endforeach
                             </tbody>

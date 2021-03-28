@@ -17,7 +17,7 @@
         <header>
             <div class="navbar navbar-dark bg-dark shadow-sm">
                 <div class="container d-flex justify-content-between">
-                    <a href="{{  route('index') }}" class="navbar-brand d-flex align-items-center">
+                    <a href="{{  route($customer->id) }}" class="navbar-brand d-flex align-items-center">
                         <strong>顧客管理（編集）</strong>
                     </a>
                 </div>
@@ -30,7 +30,7 @@
                     【メッセージサンプル】エラーです。
                 </div>
 
-                <form id="form" method="post" action="{{  route('index') }}">
+                <form id="form" method="post" action="{{  route('update') }}">
                     @csrf
                     <div class="col-md-8 order-md-1">
                         <div class="row">
@@ -89,7 +89,9 @@
                             <div class="col-md-2 mb-3">
                                 <label for="prefId">都道府県 <span class="badge badge-danger">必須</span></label>
                                 <select class="custom-select d-block w-100" name="pref_id" required>
-                                    <option value="{{ $customer->pref->name }}"></option>
+                                    @foreach($prefs as $pref)
+                                    <option value="{{ $pref->name }}" {{ $pref == "pref_id" ? "selected" : ""}}>{{ $pref->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
