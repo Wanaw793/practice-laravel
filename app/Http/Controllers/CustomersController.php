@@ -42,7 +42,7 @@ class CustomersController extends Controller
     public function edit(Request $request)
     {
         $prefs = Pref::all();
-        $customer = Customer::findOrFail($request->id);
+        $customer = Customer::find($request->id);
         return view('edit', ['customer' => $customer], ['prefs' => $prefs]);
     }
 
@@ -72,7 +72,7 @@ class CustomersController extends Controller
     {
         $id = $request->id;
         unset($id['_token']);
-        $customer = Customer::findOrFail($request->$id);
+        $customer = Customer::find($request->$id);
         $customer->fill($id)->save();
         return redirect()->route('index');
     }

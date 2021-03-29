@@ -17,7 +17,7 @@
         <header>
             <div class="navbar navbar-dark bg-dark shadow-sm">
                 <div class="container d-flex justify-content-between">
-                    <a href="{{  route($customer->id) }}" class="navbar-brand d-flex align-items-center">
+                    <a href="{{  route('index') }}" class="navbar-brand d-flex align-items-center">
                         <strong>顧客管理（編集）</strong>
                     </a>
                 </div>
@@ -30,7 +30,7 @@
                     【メッセージサンプル】エラーです。
                 </div>
 
-                <form id="form" method="post" action="{{  route('update') }}">
+                <form id="form" method="post" action="{{  route('update', $customer->id) }}">
                     @csrf
                     <div class="col-md-8 order-md-1">
                         <div class="row">
