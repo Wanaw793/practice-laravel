@@ -30,7 +30,7 @@
                     【メッセージサンプル】エラーです。
                 </div>
 
-                <form id="form" method="post" action="{{  route('update', $customer->id) }}">
+                <form id="form" method="post" action="{{  route('update', ['id' => $customer->id]) }}">
                     @csrf
                     <div class="col-md-8 order-md-1">
                         <div class="row">
@@ -60,11 +60,11 @@
                                 <label for="gender">性別 <span class="badge badge-danger">必須</span></label>
                                 <div class="col-sm-10 text-left">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="gender" value="{{ $customer->gender == 1 ? '男' : '女' }}" checked>
+                                        <input class="form-check-input" type="radio" name="gender" value="{{ $customer->gender == 1 ? '男' }}" checked>
                                         <label class="form-check-label" for="inlineCheckbox1">男</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="gender" value="{{ $customer->gender == 1 ? '男' : '女' }}">
+                                        <input class="form-check-input" type="radio" name="gender" value="{{ $customer->gender == 2 ? '女' }}">
                                         <label class="form-check-label" for="inlineCheckbox2">女</label>
                                     </div>
                                 </div>
@@ -141,7 +141,7 @@
                 </form>
                 <hr class="mb-4">
                 <div class="form-group">
-                    <a  class="btn btn-secondary" href="{{  route('index') }}" style="width:150px">戻る</a>
+                    <a  class="btn btn-secondary" href="{{  route('index', ['id' => $customer->id]) }}" style="width:150px">戻る</a>
                     <button id="complete" type="button" class="btn btn-info" style="width:150px"><i class="fas fa-database pr-1"></i> 更新</button>
                 </div>
             </div>

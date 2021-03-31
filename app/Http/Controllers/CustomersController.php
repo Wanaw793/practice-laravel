@@ -70,10 +70,9 @@ class CustomersController extends Controller
      */
     public function update(Request $request)
     {
-        $id = $request->id;
-        unset($id['_token']);
-        $customer = Customer::find($request->$id);
-        $customer->fill($id)->save();
+        $customer = Customer::find($request->id);
+        unset($customer['_token']);
+        $customer->fill($request->all())->save();
         return redirect()->route('index');
     }
 
