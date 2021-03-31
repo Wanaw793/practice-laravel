@@ -60,11 +60,11 @@
                                 <label for="gender">性別 <span class="badge badge-danger">必須</span></label>
                                 <div class="col-sm-10 text-left">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="gender" value="{{ $customer->gender == 1 ? '男' }}" checked>
+                                        <input class="form-check-input" type="radio" name="gender" value="{{ $customer->gender == 1 ? '男' : '女' }}" checked>
                                         <label class="form-check-label" for="inlineCheckbox1">男</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="gender" value="{{ $customer->gender == 2 ? '女' }}">
+                                        <input class="form-check-input" type="radio" name="gender" value="{{ $customer->gender == 1 ? '男' : '女' }}">
                                         <label class="form-check-label" for="inlineCheckbox2">女</label>
                                     </div>
                                 </div>
