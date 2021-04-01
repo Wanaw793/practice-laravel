@@ -108,7 +108,7 @@
                             <tbody id="content">
                                 @foreach ($customers as $customer)
                                 <tr>
-                                    <td scope="col">1</td>
+                                    <td scope="col">{{ $customer->id }}</td>
                                     <td scope="col"><a href="{{ route('detail', ['id' => $customer->id]) }}">{{ $customer->last_name, $customer->first_name }}　名前</a></td>
                                     <td scope="col">{{ $customer->last_kana, $customer->first_kana }} </td>
                                     <td scope="col">{{ $customer->gender == 1 ? '男' : '女' }}</td>

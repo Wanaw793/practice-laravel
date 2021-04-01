@@ -70,17 +70,18 @@ class CustomersController extends Controller
      */
     public function update(Request $request)
     {
+        $inputs = $request->input();
+        unset($inputs['_token']);
         $customer = Customer::find($request->id);
-        $customer->fill($request->all())->save();
+        $customer->fill($inputs)->save();
         return redirect()->route('index');
     }
 
     //詳細画面で削除
     public function delete(Request $request)
     {
-        //$customer = Customer::findOrFail($id);
-
-        //$customer->delete();
+        $customer = Customer::findOrFail($request->id);
+        $customer->delete();
         return redirect()->route('index');
 
     }
