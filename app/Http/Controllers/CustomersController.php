@@ -57,7 +57,7 @@ class CustomersController extends Controller
     {
         $inputs = $request->input();
         unset($inputs['_token']);
-        DB::transaction(function () use ($customer,$inputs) {
+        DB::transaction(function () use ($inputs) {
             $customer = new Customer;
             $customer->fill($inputs)->save();
         });
