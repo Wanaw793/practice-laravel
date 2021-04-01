@@ -71,7 +71,6 @@ class CustomersController extends Controller
     public function update(Request $request)
     {
         $customer = Customer::find($request->id);
-        unset($customer['_token']);
         $customer->fill($request->all())->save();
         return redirect()->route('index');
     }
