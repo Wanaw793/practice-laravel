@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\Customer;
 use Illuminate\Http\Request;
 use App\Pref;
@@ -54,10 +55,12 @@ class CustomersController extends Controller
      */
     public function store(Request $request)
     {
-        $customer = new Customer;
         $inputs = $request->input();
         unset($inputs['_token']);
-        $customer->fill($inputs)->save();
+        DB::transaction(function () use ($customer,$inputs) {
+            $customer = new Customer;
+            $customer->fill($inputs)->save();
+        });
         return redirect()->route('index');
     }
 
@@ -73,7 +76,9 @@ class CustomersController extends Controller
         $inputs = $request->input();
         unset($inputs['_token']);
         $customer = Customer::find($request->id);
-        $customer->fill($inputs)->save();
+        DB::transaction(function () use ($customer,$inputs) {
+            $customer->fill($inputs)->save();
+        });
         return redirect()->route('index');
     }
 
@@ -81,7 +86,9 @@ class CustomersController extends Controller
     public function delete(Request $request)
     {
         $customer = Customer::findOrFail($request->id);
-        $customer->delete();
+        DB::transaction(function () use ($customer) {
+            $customer->delete();
+        });
         return redirect()->route('index');
 
     }
