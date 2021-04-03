@@ -65,9 +65,9 @@
                                         <label for="prefId" class="col-sm-2 col-form-label">都道府県</label>
                                         <div class="col-sm-3">
                                             <select class="custom-select d-block" name="pref_id">
-                                                <option value=""></option>
-                                                <option value="1">北海道</option>
-                                                <option value="2">青森県</option>
+                                                @foreach($prefs as $pref)
+                                                <option value="{{ $pref->id }}" {{ $pref->id == $customer->pref_id ? "selected" : ""}}>{{ $pref->name }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>

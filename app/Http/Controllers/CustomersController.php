@@ -28,16 +28,19 @@ class CustomersController extends Controller
         if (!empty($inputs['last_kana'])) {
             $query->where('last_kana', 'Like', '%'. $inputs['last_kana']. '%');
         }
+
         if (!empty($inputs['first_kana'])) {
             $query->where('first_kana', 'Like', '%'. $inputs['first_kana']. '%');
         }
-        if (!empty($inputs['pref_id'])) {
-            $query->where('pref_id', '=',  'pref_id');
+
+        if (!empty($inputs['gender'])) {
+            $query->where('gender', '=', $inputs[1])->orwhere('gender', '=', $inputs[2]);
         }
-        //$last_kana = $request->input('last_kana');
-        //$first_kana = $request->input('first_kana');
+
+        if (!empty($inputs['pref_id'])) {
+            $query->where('pref_id', '=',  $inputs['pref_id']);
+        }
         //$gender = $request->input('gender');
-        //$pref_id = $request->input('pref_id');
 
         $customers = $query->get();
         $prefs = Pref::all();
