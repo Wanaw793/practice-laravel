@@ -33,9 +33,9 @@ class CustomersController extends Controller
             $query->where('first_kana', 'Like', '%'. $inputs['first_kana']. '%');
         }
 
-        if (!empty($inputs['gender'])) {
-            $query->where('gender', '=', $inputs[1])->orwhere('gender', '=', $inputs[2]);
-        }
+        //if (!empty($inputs['gender'])) {
+            //$query->where('gender', '=', $inputs[1])->orwhere('gender', '=', $inputs[2]);
+        //}
 
         if (!empty($inputs['pref_id'])) {
             $query->where('pref_id', '=',  $inputs['pref_id']);

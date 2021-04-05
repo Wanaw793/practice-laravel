@@ -66,7 +66,7 @@
                                         <div class="col-sm-3">
                                             <select class="custom-select d-block" name="pref_id">
                                                 @foreach($prefs as $pref)
-                                                <option value="{{ $pref->id }}" {{ $pref->id == $customer->pref_id ? "selected" : ""}}>{{ $pref->name }}</option>
+                                                <option value="{{ $pref->id }}" {{ $pref->id == $query->where('pref_id', '=',  $inputs['pref_id']) ? "selected" : ""}}>{{ $pref->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
