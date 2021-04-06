@@ -15,7 +15,14 @@ class CustomersController extends Controller
     {
         $customers = Customer::all();
         $prefs = Pref::all();
-        return view('index', ['customers' => $customers], ['prefs' => $prefs]);
+        $inputs = [
+            'last_kana' => '',
+            'first_kana' => '',
+            'gender1' => null,
+            'gender2' => null,
+            'pref_id' => null,
+        ];
+        return view('index', ['customers' => $customers], ['prefs' => $prefs])->with('inputs', $inputs);
     }
 
     //検索
@@ -33,24 +40,33 @@ class CustomersController extends Controller
             $query->where('first_kana', 'Like', '%'. $inputs['first_kana']. '%');
         }
 
-        //if (!empty($inputs['gender'])) {
-            //$query->where('gender', '=', $inputs[1])->orwhere('gender', '=', $inputs[2]);
-        //}
+        if (!empty($inputs['gender1']) || !empty($inputs['gender2'])) {
+            $genders = [];
+            if (!empty($inputs['gender1'])) {
+                $genders[] = $inputs['gender1'];
+            }
+            if (!empty($inputs['gender2'])) {
+                $genders[] = $inputs['gender2'];
+            }
+            $query->whereIn('gender', $genders);
+        }
 
         if (!empty($inputs['pref_id'])) {
             $query->where('pref_id', '=',  $inputs['pref_id']);
         }
-        //$gender = $request->input('gender');
 
         $customers = $query->get();
         $prefs = Pref::all();
-        return view('index', ['customers' => $customers], ['prefs' => $prefs]);
+
+        return view('index', ['customers' => $customers], ['prefs' => $prefs])->with('inputs', $inputs);
     }
 
     //新規登録画面の表示
-    public function create()
+    public function create(Request $request)
     {
-        return view('create');
+        $customers = Customer::all();
+        $prefs = Pref::all();
+        return view('create', ['customers' => $customers], ['prefs' => $prefs]);
     }
 
     //詳細画面の表示
@@ -82,7 +98,7 @@ class CustomersController extends Controller
             $customer = new Customer;
             $customer->fill($inputs)->save();
         });
-        return redirect()->route('index');
+        return redirect()->route('index')->with('store', true);
     }
 
     /**
@@ -100,7 +116,7 @@ class CustomersController extends Controller
         DB::transaction(function () use ($customer,$inputs) {
             $customer->fill($inputs)->save();
         });
-        return redirect()->route('index');
+        return redirect()->route('index')->with('update', true);
     }
 
     //詳細画面で削除
@@ -110,7 +126,6 @@ class CustomersController extends Controller
         DB::transaction(function () use ($customer) {
             $customer->delete();
         });
-        return redirect()->route('index');
-
+        return redirect()->route('index')->with('delete', true);
     }
 }

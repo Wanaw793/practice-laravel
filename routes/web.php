@@ -12,7 +12,7 @@
 */
 
 Route::get('', 'CustomersController@getIndex')->name('index');
-Route::post('', 'CustomersController@getIndex')->name('search');
+Route::post('', 'CustomersController@search')->name('search');
 Route::get('create', 'CustomersController@create')->name('create');
 Route::get('detail/{id}', 'CustomersController@detail')->name('detail');
 Route::get('edit/{id}', 'CustomersController@edit')->name('edit');

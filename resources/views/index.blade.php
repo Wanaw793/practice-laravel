@@ -27,36 +27,46 @@
         <main role="main">
             <div class="container-fluid" style="padding-left: 50px;padding-right: 50px;">
                 <div class="py-5 text-center">
-                    <div class="alert alert-success" role="alert">
-                        【メッセージサンプル】登録しました。
-                    </div>
+                    @if(Session::has('store'))
+                        <div class="alert alert-success" role="alert">
+                            登録しました。
+                        </div>
+                    @elseif(Session::has('delete'))
+                        <div class="alert alert-success" role="alert">
+                            削除しました。
+                        </div>
+                    @elseif(Session::has('update'))
+                        <div class="alert alert-success" role="alert">
+                            更新しました。
+                        </div>
+                    @endif
 
                     <div style="margin-bottom:20px;">
-                        <form id="form" method="post" action="{{ route('index') }}">
+                        <form id="form" method="post" action="{{ route('search') }}">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group row">
                                         <label for="lastKana" class="col-sm-2 col-form-label">姓かな</label>
                                         <div class="col-sm-6">
-                                            <input type="text" class="form-control" name="last_kana" placeholder="姓かな">
+                                            <input type="text" class="form-control" name="last_kana" placeholder="姓かな" value="{!! $inputs['last_kana'] !!}">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="firstKana" class="col-sm-2 col-form-label">名かな</label>
                                         <div class="col-sm-6">
-                                            <input type="text" class="form-control" name="first_kana" placeholder="名かな">
+                                            <input type="text" class="form-control" name="first_kana" placeholder="名かな" value="{!! $inputs['first_kana'] !!}">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="firstName" class="col-sm-2 col-form-label">性別</label>
                                         <div class="col-sm-10 text-left">
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" name="gender1" value="1">
+                                                <input class="form-check-input" type="checkbox" name="gender1" value="1" {{ !empty($inputs['gender1']) ? "checked" : ""}}>
                                                 <label class="form-check-label" for="inlineCheckbox1">男</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" name="gender2" value="2">
+                                                <input class="form-check-input" type="checkbox" name="gender2" value="2" {{ !empty($inputs['gender2']) ? "checked" : ""}}>
                                                 <label class="form-check-label" for="inlineCheckbox2">女</label>
                                             </div>
                                         </div>
@@ -65,8 +75,9 @@
                                         <label for="prefId" class="col-sm-2 col-form-label">都道府県</label>
                                         <div class="col-sm-3">
                                             <select class="custom-select d-block" name="pref_id">
+                                                <option value=""></option>
                                                 @foreach($prefs as $pref)
-                                                <option value="{{ $pref->id }}" {{ $pref->id == $query->where('pref_id', '=',  $inputs['pref_id']) ? "selected" : ""}}>{{ $pref->name }}</option>
+                                                <option value="{{ $pref->id }}" {{ $inputs['pref_id'] == $pref->id ? "selected" : ""}}>{{ $pref->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -78,15 +89,18 @@
                         <div class="form-group">
                             <button type="button" id="search" class="btn btn-primary" style="width:150px"><i class="fas fa-search pr-1"></i> 検索</button>
                         </div>
+                        @if ($customers->isEmpty())
                         <div class="alert alert-warning" role="alert">
-                            【メッセージサンプル】該当データが見つかりません。
+                            該当データが見つかりません。
                         </div>
+                        @endif
                         <div class="form-group row">
                             <a  class="btn btn-success" href="{{ route('create') }}" style="width:150px"><i class="fas fa-chalkboard-teacher pr-1"></i> 新規登録</a>
                         </div>
                     </div>
 
                     <div class="row">
+                        @if ($customers->isNotEmpty())
                         <table class="table table-bordered table-hover">
                             <thead class="thead-dark">
                                 <tr>
@@ -109,8 +123,8 @@
                                 @foreach ($customers as $customer)
                                 <tr>
                                     <td scope="col">{{ $customer->id }}</td>
-                                    <td scope="col"><a href="{{ route('detail', ['id' => $customer->id]) }}">{{ $customer->last_name, $customer->first_name }}　名前</a></td>
-                                    <td scope="col">{{ $customer->last_kana, $customer->first_kana }} </td>
+                                    <td scope="col"><a href="{{ route('detail', ['id' => $customer->id]) }}">{{ $customer->last_name }}　{{ $customer->first_name }}</a></td>
+                                    <td scope="col">{{ $customer->last_kana }}　{{ $customer->first_kana }}</td>
                                     <td scope="col">{{ $customer->gender == 1 ? '男' : '女' }}</td>
                                     <td scope="col">{{ $customer->birthday->format('Y/m/d') }}</td>
                                     <td scope="col">{{ $customer->post_code }}</td>
@@ -125,6 +139,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        @endif
                     </div>
                 </div>
             </div>
