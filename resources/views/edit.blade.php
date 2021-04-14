@@ -26,9 +26,13 @@
 
         <main role="main">
             <div class="container-fluid" style="margin-top: 50px; padding-left: 100px;padding-right: 100px;">
-                <div class="alert alert-danger" role="alert">
-                    【メッセージサンプル】エラーです。
-                </div>
+                @if ($errors->any())
+                    <div class="alert alert-danger" role="alert">
+                        @foreach ($errors->all() as $error)
+                            {{ $error }}<br/>
+                        @endforeach
+                    </div>
+                @endif
 
                 <form id="form" method="post" action="{{  route('update', ['id' => $customer->id]) }}">
                     @csrf

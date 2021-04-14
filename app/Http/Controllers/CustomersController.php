@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use DB;
 use App\Customer;
 use Illuminate\Http\Request;
-use App\Http\Requests\ValidatorEx;
+use App\Http\Requests\CustomerSearchRequest;
+use App\Http\Requests\CustomerStoreRequest;
+use App\Http\Requests\CustomerUpdateRequest;
 use App\Pref;
 
 
@@ -27,7 +29,7 @@ class CustomersController extends Controller
     }
 
     //検索
-    public function search(Request $request)
+    public function search(CustomerSearchRequest $request)
     {
         $inputs = $request->input();
 
@@ -91,7 +93,7 @@ class CustomersController extends Controller
      * @param Request $request
      * @return void
      */
-    public function store(ValidatorEx $request)
+    public function store(CustomerStoreRequest $request)
     {
         $inputs = $request->input();
         unset($inputs['_token']);
@@ -109,7 +111,7 @@ class CustomersController extends Controller
      * @param [type] $id
      * @return void
      */
-    public function update(Request $request)
+    public function update(CustomerUpdateRequest $request)
     {
         $inputs = $request->input();
         unset($inputs['_token']);

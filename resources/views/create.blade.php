@@ -26,9 +26,13 @@
 
         <main role="main">
             <div class="container-fluid" style="margin-top: 50px; padding-left: 100px;padding-right: 100px;">
-                <div class="alert alert-danger" role="alert">
-                    【メッセージサンプル】エラーです。
-                </div>
+                @if ($errors->any())
+                    <div class="alert alert-danger" role="alert">
+                        @foreach ($errors->all() as $error)
+                            {{ $error }}<br/>
+                        @endforeach
+                    </div>
+                @endif
 
                 <form id="form" method="post" action="{{  route('store') }}">
                     @csrf
@@ -36,22 +40,22 @@
                         <div class="row">
                             <div class="col-md-3 mb-3">
                                 <label for="lastName">姓 <span class="badge badge-danger">必須</span></label>
-                                <input type="text" class="form-control" name="last_name" placeholder="姓" value="{{ $customer->last_name }}" required>
+                                <input type="text" class="form-control" name="last_name" placeholder="姓" value="" required>
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="firstName">名 <span class="badge badge-danger">必須</span></label>
-                                <input type="text" class="form-control" name="first_name" placeholder="名" value="{{ $customer->first_name }}" required>
+                                <input type="text" class="form-control" name="first_name" placeholder="名" value="" required>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-3 mb-3">
                                 <label for="lastKana">姓かな <span class="badge badge-danger">必須</span></label>
-                                <input type="text" class="form-control" name="last_kana" placeholder="姓かな" value="{{ $customer->last_kana }}" required>
+                                <input type="text" class="form-control" name="last_kana" placeholder="姓かな" value="" required>
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="firstKana">名かな <span class="badge badge-danger">必須</span></label>
-                                <input type="text" class="form-control" name="first_kana" placeholder="名かな" value="{{ $customer->first_kana }}" required>
+                                <input type="text" class="form-control" name="first_kana" placeholder="名かな" value="" required>
                             </div>
                         </div>
 
@@ -60,11 +64,11 @@
                                 <label for="gender">性別 <span class="badge badge-danger">必須</span></label>
                                 <div class="col-sm-10 text-left">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="gender" value="1" {{ $customer->gender == 1 ? 'checked' : '' }}>
+                                        <input class="form-check-input" type="radio" name="gender" value="1">
                                         <label class="form-check-label" for="inlineCheckbox1">男</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="gender" value="2" {{ $customer->gender == 2 ? 'checked' : '' }}>
+                                        <input class="form-check-input" type="radio" name="gender" value="2">
                                         <label class="form-check-label" for="inlineCheckbox2">女</label>
                                     </div>
                                 </div>
@@ -74,14 +78,14 @@
                         <div class="row">
                             <div class="col-md-3 mb-3">
                                 <label for="birthday">生年月日 <span class="badge badge-danger">必須</span></label>
-                                <input type="date" class="form-control" name="birthday" placeholder="生年月日" value="{{ $customer->birthday->format('Y-m-d') }}" required>
+                                <input type="date" class="form-control" name="birthday" placeholder="生年月日" value="" required>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-2 mb-3">
                                 <label for="postCode">郵便番号 <span class="badge badge-danger">必須</span></label>
-                                <input type="text" class="form-control" name="post_code" placeholder="郵便番号" value="{{ $customer->post_code }}" required>
+                                <input type="text" class="form-control" name="post_code" placeholder="郵便番号" value="" required>
                             </div>
                         </div>
 
@@ -99,42 +103,42 @@
                         <div class="row">
                             <div class="col-md-5 mb-3">
                                 <label for="address">住所 <span class="badge badge-danger">必須</span></label>
-                                <input type="text" class="form-control" name="address" placeholder="渋谷区道玄坂2丁目11-1" value="{{ $customer->address }}" required>
+                                <input type="text" class="form-control" name="address" placeholder="渋谷区道玄坂2丁目11-1" value="" required>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-5 mb-3">
                                 <label for="building">建物名</label>
-                                <input type="text" class="form-control" name="building" placeholder="Ｇスクエア渋谷道玄坂 4F" value="{{ $customer->building }}">
+                                <input type="text" class="form-control" name="building" placeholder="Ｇスクエア渋谷道玄坂 4F" value="">
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-3 mb-3">
                                 <label for="tel">電話番号 <span class="badge badge-danger">必須</span></label>
-                                <input type="tel" class="form-control" name="tel" placeholder="03-1234-5678" value="{{ $customer->tel }}" required>
+                                <input type="tel" class="form-control" name="tel" placeholder="03-1234-5678" value="" required>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-3 mb-3">
                                 <label for="mobile">携帯番号 <span class="badge badge-danger">必須</span></label>
-                                <input type="tel" class="form-control" name="mobile" placeholder="080-1234-5678" value="{{ $customer->mobile }}" required>
+                                <input type="tel" class="form-control" name="mobile" placeholder="080-1234-5678" value="" required>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-3 mb-3">
                                 <label for="email">メールアドレス <span class="badge badge-danger">必須</span></label>
-                                <input type="email" class="form-control" name="email" placeholder="you@example.com" value="{{ $customer->email }}" required>
+                                <input type="email" class="form-control" name="email" placeholder="you@example.com" value="" required>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-8 mb-3">
                                 <label for="remarks">備考</label>
-                                <textarea class="form-control" aria-label="With textarea" name="remarks">{{ $customer->remarks }}</textarea>
+                                <textarea class="form-control" aria-label="With textarea" name="remarks"></textarea>
                             </div>
                         </div>
                     </div>

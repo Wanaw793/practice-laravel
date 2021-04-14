@@ -141,6 +141,20 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'last_name' => '姓',
+        'first_name' => '名',
+        'last_kana' => '姓かな',
+        'first_kana' => '名かな',
+        'gender' => '性別',
+        'birthday' => '生年月日',
+        'post_code' => '郵便番号',
+        'pref_id' => '都道府県',
+        'address' => '住所',
+        'building' => '建物名',
+        'tel' => '電話番号',
+        'mobile' => '携帯番号',
+        'email' => 'メールアドレス',
+    ],
 
 ];
