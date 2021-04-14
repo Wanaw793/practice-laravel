@@ -13,7 +13,7 @@ class ValidatorExServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        //Validator::extend
     }
 
     /**

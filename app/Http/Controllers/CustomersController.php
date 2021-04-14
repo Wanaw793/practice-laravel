@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use DB;
 use App\Customer;
 use Illuminate\Http\Request;
+use App\Http\Requests\ValidatorEx;
 use App\Pref;
 
 
@@ -90,7 +91,7 @@ class CustomersController extends Controller
      * @param Request $request
      * @return void
      */
-    public function store(Request $request)
+    public function store(ValidatorEx $request)
     {
         $inputs = $request->input();
         unset($inputs['_token']);
