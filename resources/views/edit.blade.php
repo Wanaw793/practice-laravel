@@ -1,30 +1,7 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>顧客管理</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap">
-        <link rel="stylesheet" href="https://getbootstrap.jp/docs/4.5/examples/album/album.css">
-        <link rel="stylesheet" href="https://getbootstrap.jp/docs/4.5/examples/example.css">
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css">
-    </head>
+@extends('layout')
 
-    <body>
-        <header>
-            <div class="navbar navbar-dark bg-dark shadow-sm">
-                <div class="container d-flex justify-content-between">
-                    <a href="{{  route('index') }}" class="navbar-brand d-flex align-items-center">
-                        <strong>顧客管理（編集）</strong>
-                    </a>
-                </div>
-            </div>
-        </header>
-
-        <main role="main">
+@section('title', '編集')
+@section('content')
             <div class="container-fluid" style="margin-top: 50px; padding-left: 100px;padding-right: 100px;">
                 @if ($errors->any())
                     <div class="alert alert-danger" role="alert">
@@ -154,7 +131,9 @@
         <div id="complete-confirm" title="確認" style="display: none;">
             <p><span class="ui-icon ui-icon-info" style="float:left; margin:12px 12px 20px 0;"></span>更新しますか？</p>
         </div>
+@endsection
 
+@section('javascript')
         <script>
             $("#complete").click(function() {
                 completeConfirm(function(result){
@@ -187,5 +166,4 @@
                 });
             }
         </script>
-    </body>
-</html>
+@endsection

@@ -40,4 +40,12 @@ class CustomerUpdateRequest extends FormRequest
             'email' => 'required|email|max:80|unique_email',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'email.unique_email' => 'メールアドレスは既に登録されています。',
+        ];
+    }
+
 }
