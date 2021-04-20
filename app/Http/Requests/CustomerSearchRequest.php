@@ -24,7 +24,10 @@ class CustomerSearchRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'last_kana' => 'max:50',
+            'first_kana' => 'max:50',
+            'gender' => 'integer',
+            'pref_id' => 'integer',
         ];
     }
 }

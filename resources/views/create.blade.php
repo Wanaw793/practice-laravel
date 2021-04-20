@@ -94,7 +94,7 @@
                                 <label for="prefId">都道府県 <span class="badge badge-danger">必須</span></label>
                                 <select class="custom-select d-block w-100" name="pref_id" required>
                                     @foreach($prefs as $pref)
-                                        <option value="{{ old('$pref->id') }}">{{ $pref->name }}</option>
+                                        <option value="{{ $pref->id }}" @if(old("pref_id") == $pref->id) selected @endif>{{ $pref->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
