@@ -23,6 +23,7 @@ class CreateCustomersTable extends Migration
             $table->datetime('birthday')->comment('生年月日');
             $table->string('post_code')->comment('郵便番号');
             $table->integer('pref_id')->unsigned()->comment('都道府県ID');
+            $table->integer('city_id')->unsigned()->comment('市区町村ID');
             $table->string('address', 255)->comment('住所');
             $table->string('building', 255)->nullable()->comment('建物名');
             $table->string('tel', 255)->comment('電話番号');
