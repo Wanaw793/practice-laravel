@@ -19,3 +19,4 @@ Route::get('edit/{id}', 'CustomersController@edit')->name('edit');
 Route::post('store', 'CustomersController@store')->name('store');
 Route::post('update', 'CustomersController@update')->name('update');
 Route::get('delete/{id}', 'CustomersController@delete')->name('delete');
+Route::get('ajax', 'AjaxController@ajax')->name('ajax');

@@ -8,4 +8,9 @@ class City extends Model
 {
     protected $guarded = ['id'];
     protected $dates = ['created_at', 'updated_at'];
+
+    public function pref()
+    {
+        return $this->belongsTo('App\Pref');
+    }
 }

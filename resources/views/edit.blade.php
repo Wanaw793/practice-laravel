@@ -191,6 +191,8 @@
                 }
 
                 $("#city_id").empty();
+//
+
 
                 $("#city_id").append($('<option>').text("新宿区").attr('value', 1));
                 $("#city_id").append($('<option>').text("渋谷区").attr('value', 2));

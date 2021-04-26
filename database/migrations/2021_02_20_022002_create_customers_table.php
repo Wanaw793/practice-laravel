@@ -34,6 +34,7 @@ class CreateCustomersTable extends Migration
             $table->timestamp('updated_at')->useCurrent()->comment('更新日時');
             $table->unique(['email'], 'customers_email_unique');
             $table->foreign('pref_id')->references('id')->on('prefs')->onDelete('cascade');
+            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
         });
     }
 

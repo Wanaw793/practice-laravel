@@ -84,9 +84,8 @@ class CustomersController extends Controller
     public function edit(Request $request)
     {
         $prefs = Pref::all();
-        $cities = City::all();
         $customer = Customer::find($request->id);
-        return view('edit', ['customer' => $customer], ['prefs' => $prefs], ['cities' => $cities]);
+        return view('edit', ['customer' => $customer], ['prefs' => $prefs]);
     }
 
     /**
