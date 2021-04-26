@@ -13,4 +13,9 @@ class Customer extends Model
     {
         return $this->belongsTo('App\Pref');
     }
+
+    public function city()
+    {
+        return $this->belongsTo('App\City');
+    }
 }

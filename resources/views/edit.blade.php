@@ -67,13 +67,23 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-md-2 mb-3">
-                                <label for="prefId">都道府県 <span class="badge badge-danger">必須</span></label>
-                                <select class="custom-select d-block w-100" name="pref_id" required>
-                                    @foreach($prefs as $pref)
-                                    <option value="{{ $pref->id }}" {{ old("pref_id", $customer->pref_id) == $pref->id ? "selected" : ""}}>{{ $pref->name }}</option>
-                                    @endforeach
-                                </select>
+                            <div class="d-flex col-md-8 mb-2">
+                                <div style=margin-right:20px;>
+                                    <label for="prefId">都道府県 <span class="badge badge-danger">必須</span></label>
+                                    <select class="custom-select d-block w-100" name="pref_id" required>
+                                        @foreach($prefs as $pref)
+                                        <option value="{{ $pref->id }}" {{ old("pref_id", $customer->pref_id) == $pref->id ? "selected" : ""}}>{{ $pref->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="cityId">市区町村 <span class="badge badge-danger">必須</span></label>
+                                    <select id="city_id" class="custom-select" name="city_id" required>
+                                        @foreach($cities as $city)
+                                        <option value=""></option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
                         </div>
 
@@ -165,5 +175,33 @@
                     buttons: buttons
                 });
             }
+
+        $(function() {
+                setCities($("#pref_id").val());
+         });
+
+         $("#pref_id").change(function() {
+            setCities($("#pref_id").val());
+        });
+
+        function setCities(prefId) {
+                if (!prefId) {
+                    $("#city_id").empty();
+                    return;
+                }
+
+                $("#city_id").empty();
+
+                $("#city_id").append($('<option>').text("新宿区").attr('value', 1));
+                $("#city_id").append($('<option>').text("渋谷区").attr('value', 2));
+            }
+
+        $(function() {
+            $('#pref_id').on("change",function(){
+                $.ajax({
+                    url: 'update',
+                    type: 'POST',
+                )}
+        });
         </script>
 @endsection

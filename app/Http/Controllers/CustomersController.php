@@ -9,6 +9,7 @@ use App\Http\Requests\CustomerSearchRequest;
 use App\Http\Requests\CustomerStoreRequest;
 use App\Http\Requests\CustomerUpdateRequest;
 use App\Pref;
+use App\City;
 
 
 class CustomersController extends Controller
@@ -83,8 +84,9 @@ class CustomersController extends Controller
     public function edit(Request $request)
     {
         $prefs = Pref::all();
+        $cities = City::all();
         $customer = Customer::find($request->id);
-        return view('edit', ['customer' => $customer], ['prefs' => $prefs]);
+        return view('edit', ['customer' => $customer], ['prefs' => $prefs], ['cities' => $cities]);
     }
 
     /**

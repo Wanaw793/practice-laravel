@@ -67,13 +67,23 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-2 mb-3">
-                        <label for="prefId">都道府県 <span class="badge badge-danger">必須</span></label>
-                        <select class="custom-select d-block w-100" name="pref_id" required>
-                            @foreach($prefs as $pref)
-                                <option value="{{ $pref->id }}" {{ old("pref_id") == $pref->id ? "selected" : ""}}>{{ $pref->name }}</option>
-                            @endforeach
-                        </select>
+                    <div class="d-flex col-md-8 mb-2">
+                        <div style=margin-right:20px;>
+                            <label for="prefId">都道府県 <span class="badge badge-danger">必須</span></label>
+                            <select class="custom-select d-block w-100" name="pref_id" required>
+                                @foreach($prefs as $pref)
+                                    <option value="{{ $pref->id }}" {{ old("pref_id") == $pref->id ? "selected" : ""}}>{{ $pref->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div>
+                            <label for="cityId">市区町村 <span class="badge badge-danger">必須</span></label>
+                            <select id="city_id" class="custom-select" name="city_id" required>
+                                @foreach($cities as $cities)
+                                    <option value=""></option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
                 </div>
 
