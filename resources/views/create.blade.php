@@ -79,9 +79,7 @@
                         <div>
                             <label for="cityId">市区町村 <span class="badge badge-danger">必須</span></label>
                             <select id="city_id" class="custom-select" name="city_id" required>
-                                @foreach($cities as $cities)
-                                    <option value=""></option>
-                                @endforeach
+                                <option value=""></option>
                             </select>
                         </div>
                     </div>
@@ -174,5 +172,46 @@
                 buttons: buttons
             });
         }
+            //画面表示時、バリデーションエラー戻り時
+            $(function() {
+                setCities($("#pref_id").val());
+            });
+
+            //都道府県プルダウン選択時
+            $("#pref_id").change(function() {
+                setCities($("#pref_id").val());
+            });
+
+            //市区町村プルダウンの設定
+            function setCities() {
+                if (!prefId) {
+                    $("#city_id").empty();
+                    return;
+                }
+
+                $("#city_id").empty();
+                    $function(){
+                        $("pref_id").on("change",function(){
+                            var data =
+                            $.ajax({
+                                url:"update",
+                                type:get,
+                                datatype:"json",
+                                data:{
+                                    "pref_id":$("#pref_id").val(),
+                                }
+                            });
+
+                        .done( (data) => {
+                            $(".city_id option").remove();
+                            $.each(data, function(city_id, name){
+                                $("#city_id").append($('<option>').text("city_id").attr('value', $city->pref_id));
+                            });
+                        })
+
+                //Ajaxレスポンスに差し替え
+                //$("#city_id").append($('<option>').text("新宿区").attr('value', 1));
+                //$("#city_id").append($('<option>').text("渋谷区").attr('value', 2));
+            }
     </script>
 @endsection

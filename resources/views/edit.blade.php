@@ -80,7 +80,7 @@
                                     <label for="cityId">市区町村 <span class="badge badge-danger">必須</span></label>
                                     <select id="city_id" class="custom-select" name="city_id" required>
                                         @foreach($cities as $city)
-                                        <option value=""></option>
+                                        <option value="">{{ $cities->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -176,34 +176,39 @@
                 });
             }
 
-        $(function() {
+            //画面表示時、バリデーションエラー戻り時
+            $(function() {
+                    setCities($("#pref_id").val());
+            });
+
+            //都道府県プルダウン選択時
+            $("#pref_id").change(function() {
                 setCities($("#pref_id").val());
-         });
+            });
 
-         $("#pref_id").change(function() {
-            setCities($("#pref_id").val());
-        });
+            //市区町村プルダウンの設定
+            function setCities(prefId) {
+                    if (!prefId) {
+                        $("#city_id").empty();
+                        return;
+                    }
 
-        function setCities(prefId) {
-                if (!prefId) {
                     $("#city_id").empty();
-                    return;
-                }
+                    $function(){
+                        $("pref_id").on("change",function(){
+                            $.ajax({
+                                url:"update",
+                                type:get,
+                                data:{
+                                    "pref_id":$("#pref_id").val(),
+                                }
+                            });
 
-                $("#city_id").empty();
-//
-
-
-                $("#city_id").append($('<option>').text("新宿区").attr('value', 1));
-                $("#city_id").append($('<option>').text("渋谷区").attr('value', 2));
+                            .done( (data) => {
+                                $("#city_id").append($('<option>').text("city_id").attr('value', $cities->pref_id)); //Ajaxレスポンスに差し替え
+                            });
+                        });
+                    }
             }
-
-        $(function() {
-            $('#pref_id').on("change",function(){
-                $.ajax({
-                    url: 'update',
-                    type: 'POST',
-                )}
-        });
         </script>
 @endsection
