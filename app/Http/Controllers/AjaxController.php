@@ -13,7 +13,7 @@ class AjaxController extends Controller
         $id = $request->pref_id;
 
         //市区町村のリストを検索する
-        $cities = City::where('pref_id', '=',  id)->get();
+        $cities = City::where('pref_id', '=',  $id)->get();
 
         //レスポンスを返す
         return response()->json($cities);

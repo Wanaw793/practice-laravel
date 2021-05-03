@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call('PrefsTableSeeder');
-        $this->call('CustomerSeeder');
         $this->call('CitiesTableSeeder');
+        $this->call('CustomerSeeder');
     }
 }

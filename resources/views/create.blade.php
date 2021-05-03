@@ -70,7 +70,7 @@
                     <div class="d-flex col-md-8 mb-2">
                         <div style=margin-right:20px;>
                             <label for="prefId">都道府県 <span class="badge badge-danger">必須</span></label>
-                            <select class="custom-select d-block w-100" name="pref_id" required>
+                            <select id="pref_id" class="custom-select" name="pref_id" required>
                                 @foreach($prefs as $pref)
                                     <option value="{{ $pref->id }}" {{ old("pref_id") == $pref->id ? "selected" : ""}}>{{ $pref->name }}</option>
                                 @endforeach
@@ -173,45 +173,53 @@
             });
         }
             //画面表示時、バリデーションエラー戻り時
-            $(function() {
-                setCities($("#pref_id").val());
-            });
+            //$(function() {
+                //setCities($("#pref_id").val());
+            //});
 
             //都道府県プルダウン選択時
-            $("#pref_id").change(function() {
-                setCities($("#pref_id").val());
-            });
+            //$("#pref_id").change(function() {
+                //setCities($("#pref_id").val());
+            //});
 
             //市区町村プルダウンの設定
-            function setCities() {
-                if (!prefId) {
-                    $("#city_id").empty();
-                    return;
-                }
+            //function setCities() {
+                //if (!prefId) {
+                    //$("#city_id").empty();
+                    //return;
+                //}
 
-                $("#city_id").empty();
-                    $function(){
-                        $("pref_id").on("change",function(){
-                            var data =
-                            $.ajax({
-                                url:"update",
-                                type:get,
-                                datatype:"json",
-                                data:{
-                                    "pref_id":$("#pref_id").val(),
-                                }
-                            });
+                //$("#city_id").empty();
+                $("#pref_id").on("change",function(){
+                    var pref_id = $('select').val();
 
-                        .done( (data) => {
-                            $(".city_id option").remove();
-                            $.each(data, function(city_id, name){
-                                $("#city_id").append($('<option>').text("city_id").attr('value', $city->pref_id));
-                            });
-                        })
+                    // alert(pref_id);
+                    $.ajax({
+                        url:"{{  route('ajax') }}",
+                        type:"get",
+                        datatype:"json",
+                        data: {
+                            "pref_id": pref_id
+                        }
+                    })
+
+                    .done(function(data) {
+                        // alert("hoge");
+                        // $(".city_id option").remove();
+                        $("#city_id").empty();
+                        // for(var i=0; i<res.length; ++i){
+                        data.forEach(function(item, index){
+                            // $("#city_id").append($('<option>').text("city_id").attr('value', $city->pref_id));
+                            $("#city_id").append($('<option>').text(item.name).attr('value', item.id));
+                        });
+                        //$.each(data, function(city_id, name){
+                            //$("#city_id").append($('<option>').text("city_id").attr('value', $city->pref_id));
+                        //});
+                    });
 
                 //Ajaxレスポンスに差し替え
                 //$("#city_id").append($('<option>').text("新宿区").attr('value', 1));
                 //$("#city_id").append($('<option>').text("渋谷区").attr('value', 2));
-            }
+        });
     </script>
 @endsection
