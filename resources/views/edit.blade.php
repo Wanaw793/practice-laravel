@@ -79,9 +79,7 @@
                                 <div>
                                     <label for="cityId">市区町村 <span class="badge badge-danger">必須</span></label>
                                     <select id="city_id" class="custom-select" name="city_id" required>
-                                        @foreach($cities as $city)
-                                        <option value="">{{ $cities->name }}</option>
-                                        @endforeach
+                                        <option value=""></option>
                                     </select>
                                 </div>
                             </div>
@@ -177,38 +175,41 @@
             }
 
             //画面表示時、バリデーションエラー戻り時
-            $(function() {
-                    setCities($("#pref_id").val());
-            });
+            //$(function() {
+                    //setCities($("#pref_id").val());
+            //});
 
             //都道府県プルダウン選択時
-            $("#pref_id").change(function() {
-                setCities($("#pref_id").val());
-            });
+            //$("#pref_id").change(function() {
+                //setCities($("#pref_id").val());
+            //});
 
             //市区町村プルダウンの設定
-            function setCities(prefId) {
-                    if (!prefId) {
-                        $("#city_id").empty();
-                        return;
-                    }
+            //function setCities(prefId) {
+                    //if (!prefId) {
+                        //$("#city_id").empty();
+                        //return;
+                    //}
 
-                    $("#city_id").empty();
-                    $function(){
-                        $("pref_id").on("change",function(){
-                            $.ajax({
-                                url:"update",
-                                type:get,
-                                data:{
-                                    "pref_id":$("#pref_id").val(),
-                                }
-                            });
+                    //$("#city_id").empty();
+                    $("#pref_id").on("change",function(){
+                        var pref_id = $('select').val();
 
-                            .done( (data) => {
-                                $("#city_id").append($('<option>').text("city_id").attr('value', $cities->pref_id)); //Ajaxレスポンスに差し替え
+                    $.ajax({
+                        url:"{{ route('ajax') }}",
+                        type:"get",
+                        datatype:"json",
+                        data: {
+                                "pref_id": pref_id,
+                             }
+                        })
+
+                        .done(function(data) {
+                            $("#city_id").empty();
+                            data.forEach(function(item, index){
+                            $("#city_id").append($('<option>').text(item.name).attr('value', item.id));//Ajaxレスポンスに差し替え
                             });
                         });
-                    }
-            }
+                    });
         </script>
 @endsection
