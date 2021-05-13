@@ -70,7 +70,7 @@
                             <div class="d-flex col-md-8 mb-2">
                                 <div style=margin-right:20px;>
                                     <label for="prefId">都道府県 <span class="badge badge-danger">必須</span></label>
-                                    <select class="custom-select d-block w-100" name="pref_id" required>
+                                    <select id="pref_id" class="custom-select d-block w-100" name="pref_id" required>
                                         @foreach($prefs as $pref)
                                         <option value="{{ $pref->id }}" {{ old("pref_id", $customer->pref_id) == $pref->id ? "selected" : ""}}>{{ $pref->name }}</option>
                                         @endforeach
@@ -176,7 +176,7 @@
 
             //画面表示時、バリデーションエラー戻り時
             $(function() {
-                    setCities($("#pref_id").val());
+                setCities($("#pref_id").val());
             });
 
             //都道府県プルダウン選択時
@@ -186,35 +186,31 @@
 
             //市区町村プルダウンの設定
             function setCities(prefId) {
-                    if (!prefId) {
-                        $("#city_id").empty();
-                        return;
-                    }
-
+                if (!prefId) {
                     $("#city_id").empty();
-                    $("#pref_id").on("change",function(){
-                        var pref_id = $('select').val();
+                    return;
+                }
 
-                    $.ajax({
-                        url:"{{ route('ajax') }}",
-                        type:"get",
-                        datatype:"json",
-                        data: {
-                                "pref_id": pref_id,
-                                "city_id": city_id,
-                             }
-                        })
+                $.ajax({
+                    url:"{{ route('ajax') }}",
+                    type:"get",
+                    datatype:"json",
+                    data: {
+                        "pref_id": prefId,
+                    }
+                })
 
-                        .done(function(data) {
-                            $("#city_id").empty();
-                            data.forEach(function(item, index){
-                            $("#city_id").append($('<option>').text(item.name).attr('value', item.id));//Ajaxレスポンスに差し替え
-                            });
-                        });
-
-                        .fail(function(data) {
-                            alert("error");
-                        })
+                .done(function(data) {
+                    $("#city_id").empty();
+                    let cityId = {{ old('city_id', $customer->city_id) }};
+                    data.forEach(function(item, index){
+                        $("#city_id").append($('<option>').text(item.name).attr('value', item.id));//else
                     });
+                })
+                //if分でカマス
+                .fail(function(data) {
+                    alert("error");
+                });
+            }
         </script>
 @endsection

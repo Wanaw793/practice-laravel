@@ -173,53 +173,41 @@
             });
         }
             //画面表示時、バリデーションエラー戻り時
-            //$(function() {
-                //setCities($("#pref_id").val());
-            //});
+            $(function() {
+                setCities($("#pref_id").val());
+            });
 
             //都道府県プルダウン選択時
-            //$("#pref_id").change(function() {
-                //setCities($("#pref_id").val());
-            //});
+            $("#pref_id").change(function() {
+                setCities($("#pref_id").val());
+            });
 
             //市区町村プルダウンの設定
-            //function setCities() {
-                //if (!prefId) {
-                    //$("#city_id").empty();
-                    //return;
-                //}
+            function setCities(prefId) {
+                if (!prefId) {
+                    $("#city_id").empty();
+                    return;
+                }
 
-                //$("#city_id").empty();
-                $("#pref_id").on("change",function(){
-                    var pref_id = $('select').val();
+                $.ajax({
+                    url:"{{  route('ajax') }}",
+                    type:"get",
+                    datatype:"json",
+                    data: {
+                        "pref_id": prefId
+                    }
+                })
 
-                    // alert(pref_id);
-                    $.ajax({
-                        url:"{{  route('ajax') }}",
-                        type:"get",
-                        datatype:"json",
-                        data: {
-                            "pref_id": pref_id
-                        }
-                    })
-
-                    .done(function(data) {
-                        // alert("hoge");
-                        // $(".city_id option").remove();
-                        $("#city_id").empty();
-                        // for(var i=0; i<res.length; ++i){
-                        data.forEach(function(item, index){
-                            // $("#city_id").append($('<option>').text("city_id").attr('value', $city->pref_id));
-                            $("#city_id").append($('<option>').text(item.name).attr('value', item.id));
-                        });
-                        //$.each(data, function(city_id, name){
-                            //$("#city_id").append($('<option>').text("city_id").attr('value', $city->pref_id));
-                        //});
+                .done(function(data) {
+                    $("#city_id").empty();
+                    //oldから市区町村IDを取得
+                    let cityId = {{ old('city_id') }};
+                    data.forEach(function(item, index){
+                        //市区町村IDによってselected付けるか分岐する
+                        if
+                        $("#city_id").append($('<option>').text(item.name).attr('value', item.id));
                     });
-
-                //Ajaxレスポンスに差し替え
-                //$("#city_id").append($('<option>').text("新宿区").attr('value', 1));
-                //$("#city_id").append($('<option>').text("渋谷区").attr('value', 2));
-        });
+                });
+            }
     </script>
 @endsection
