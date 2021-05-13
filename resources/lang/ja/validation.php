@@ -150,6 +150,7 @@ return [
         'birthday' => '生年月日',
         'post_code' => '郵便番号',
         'pref_id' => '都道府県',
+        'city_id' => '市区町村',
         'address' => '住所',
         'building' => '建物名',
         'tel' => '電話番号',

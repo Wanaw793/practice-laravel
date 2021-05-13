@@ -175,23 +175,23 @@
             }
 
             //画面表示時、バリデーションエラー戻り時
-            //$(function() {
-                    //setCities($("#pref_id").val());
-            //});
+            $(function() {
+                    setCities($("#pref_id").val());
+            });
 
             //都道府県プルダウン選択時
-            //$("#pref_id").change(function() {
-                //setCities($("#pref_id").val());
-            //});
+            $("#pref_id").change(function() {
+                setCities($("#pref_id").val());
+            });
 
             //市区町村プルダウンの設定
-            //function setCities(prefId) {
-                    //if (!prefId) {
-                        //$("#city_id").empty();
-                        //return;
-                    //}
+            function setCities(prefId) {
+                    if (!prefId) {
+                        $("#city_id").empty();
+                        return;
+                    }
 
-                    //$("#city_id").empty();
+                    $("#city_id").empty();
                     $("#pref_id").on("change",function(){
                         var pref_id = $('select').val();
 
@@ -201,6 +201,7 @@
                         datatype:"json",
                         data: {
                                 "pref_id": pref_id,
+                                "city_id": city_id,
                              }
                         })
 
@@ -210,6 +211,10 @@
                             $("#city_id").append($('<option>').text(item.name).attr('value', item.id));//Ajaxレスポンスに差し替え
                             });
                         });
+
+                        .fail(function(data) {
+                            alert("error");
+                        })
                     });
         </script>
 @endsection

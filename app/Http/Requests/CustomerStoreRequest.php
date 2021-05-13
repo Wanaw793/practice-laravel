@@ -32,6 +32,7 @@ class CustomerStoreRequest extends FormRequest
             'birthday' => 'required|date',
             'post_code' => ['required', 'regex:/^[0-9]{3}-[0-9]{4}$/'],
             'pref_id' => 'required|integer',
+            'city_id' => 'required|integer',
             'address' => 'required|max:80',
             'building' => 'max:80',
             'tel' => ['required', 'regex:/^0\d{1,3}-\d{1,4}-\d{4}$/'],
