@@ -201,11 +201,14 @@
                 .done(function(data) {
                     $("#city_id").empty();
                     //oldから市区町村IDを取得
-                    let cityId = {{ old('city_id') }};
+                    let cityId = "{{ old('city_id') }}";
                     data.forEach(function(item, index){
                         //市区町村IDによってselected付けるか分岐する
-                        if
-                        $("#city_id").append($('<option>').text(item.name).attr('value', item.id));
+                        if(cityId == 1){
+                            alert(error);
+                        } else {
+                            $("#city_id").append($('<option>').text(item.name).attr('value', item.id));
+                        }
                     });
                 });
             }

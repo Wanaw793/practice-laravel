@@ -204,10 +204,13 @@
                     $("#city_id").empty();
                     let cityId = {{ old('city_id', $customer->city_id) }};
                     data.forEach(function(item, index){
-                        $("#city_id").append($('<option>').text(item.name).attr('value', item.id));//else
+                        //if(city_id == ){
+                            //("#city_id").append($('<option>').text(item.name).attr('value', item.id));
+                        //} else {
+                            $("#city_id").append($('<option>').text(item.name).attr('value', item.id));
+                        }
                     });
                 })
-                //if分でカマス
                 .fail(function(data) {
                     alert("error");
                 });
