@@ -204,8 +204,8 @@
                     let cityId = "{{ old('city_id') }}";
                     data.forEach(function(item, index){
                         //市区町村IDによってselected付けるか分岐する
-                        if(cityId == 1){
-                            alert(error);
+                        if(cityId == item.id){
+                            $("#city_id").val("");
                         } else {
                             $("#city_id").append($('<option>').text(item.name).attr('value', item.id));
                         }
