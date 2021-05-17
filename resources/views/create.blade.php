@@ -205,7 +205,9 @@
                     data.forEach(function(item, index){
                         //市区町村IDによってselected付けるか分岐する
                         if(cityId == item.id){
-                            $("#city_id").val("");
+                            $("#city_id").append($('<option>').text(item.name).attr('value', item.id).prop('selected', true));
+                            //$("option:selected", this).data();
+                            //$("#city_id").val(data).attr('selected', 'selected');
                         } else {
                             $("#city_id").append($('<option>').text(item.name).attr('value', item.id));
                         }

@@ -202,11 +202,13 @@
 
                 .done(function(data) {
                     $("#city_id").empty();
+                    //oldから市区町村IDを取得
                     let cityId = {{ old('city_id', $customer->city_id) }};
                     data.forEach(function(item, index){
-                        //if(city_id == ){
-                            //("#city_id").append($('<option>').text(item.name).attr('value', item.id));
-                        //} else {
+                        //市区町村IDによってselected付けるか分岐する
+                        if(cityId == item.id){
+                            $("#city_id").append($('<option>').text(item.name).attr('value', item.id).prop('selected', true));
+                        } else {
                             $("#city_id").append($('<option>').text(item.name).attr('value', item.id));
                         }
                     });
