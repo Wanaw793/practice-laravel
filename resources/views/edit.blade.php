@@ -40,7 +40,7 @@
                             <div class="col-md-3 mb-3">
                                 <label for="gender">性別 <span class="badge badge-danger">必須</span></label>
                                 <div class="col-sm-10 text-left">
-                                    <div class="form-check form-check-inline"></div>
+                                    <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="gender" value="1" {{ old("gender", $customer->gender) == 1 ? 'checked' : "" }}>
                                         <label class="form-check-label" for="inlineCheckbox1">男</label>
                                     </div>
@@ -127,14 +127,13 @@
                             </div>
                         </div>
                     </div>
-                </form>
-                <hr class="mb-4">
-                <div class="form-group">
-                    <a  class="btn btn-secondary" href="{{  route('index', ['id' => $customer->id]) }}" style="width:150px">戻る</a>
-                    <button id="complete" type="button" class="btn btn-info" style="width:150px"><i class="fas fa-database pr-1"></i> 更新</button>
-                </div>
+            </form>
+            <hr class="mb-4">
+            <div class="form-group">
+                <a  class="btn btn-secondary" href="{{  route('index', ['id' => $customer->id]) }}" style="width:150px">戻る</a>
+                <button id="complete" type="button" class="btn btn-info" style="width:150px"><i class="fas fa-database pr-1"></i> 更新</button>
             </div>
-        </main>
+            </div>
 
         <div id="complete-confirm" title="確認" style="display: none;">
             <p><span class="ui-icon ui-icon-info" style="float:left; margin:12px 12px 20px 0;"></span>更新しますか？</p>

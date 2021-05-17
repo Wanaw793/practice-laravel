@@ -11,10 +11,18 @@ use App\Http\Requests\CustomerUpdateRequest;
 use App\Pref;
 use App\City;
 
-
+/**
+ * Class CustomersController
+ *
+ * @package App\Http\Controllers
+ */
 class CustomersController extends Controller
 {
-    //一覧画面
+    /**
+     * 一覧画面
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application|\Illuminate\View\View
+     */
     public function getIndex()
     {
         $customers = Customer::all();
@@ -56,7 +64,7 @@ class CustomersController extends Controller
         }
 
         if (!empty($inputs['pref_id'])) {
-            $query->where('pref_id', '=',  $inputs['pref_id']);
+            $query->where('pref_id', '=', $inputs['pref_id']);
         }
 
         $customers = $query->get();
@@ -117,7 +125,7 @@ class CustomersController extends Controller
         $inputs = $request->input();
         unset($inputs['_token']);
         $customer = Customer::find($request->id);
-        DB::transaction(function () use ($customer,$inputs) {
+        DB::transaction(function () use ($customer, $inputs) {
             $customer->fill($inputs)->save();
         });
         return redirect()->route('index')->with('update', true);
