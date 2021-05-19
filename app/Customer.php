@@ -8,7 +8,7 @@ use SoftDeletes;
 class Customer extends Model
 {
     protected $guarded = ['id'];
-    protected $dates = ['birthday', 'created_at', 'updated_at'];
+    protected $dates = ['birthday', 'created_at', 'updated_at', 'deleted_at'];
 
     public function pref()
     {
