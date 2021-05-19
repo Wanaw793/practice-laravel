@@ -32,7 +32,7 @@ class CreateCustomersTable extends Migration
             $table->text('remarks')->nullable()->comment('備考');
             $table->timestamp('created_at')->useCurrent()->comment('作成日時');
             $table->timestamp('updated_at')->useCurrent()->comment('更新日時');
-            $table->softDeletes()->comment('削除日時');
+            $table->timestamp('deleted_at')->useCurrent()->softDeletes()->comment('削除日時');
             $table->unique(['email'], 'customers_email_unique');
             $table->foreign('pref_id')->references('id')->on('prefs')->onDelete('cascade');
             $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
