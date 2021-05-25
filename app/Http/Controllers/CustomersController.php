@@ -25,7 +25,7 @@ class CustomersController extends Controller
      */
     public function getIndex()
     {
-        $customers = Customer::all();
+        $customers = Customer::paginate(20);
         $customers = Customer::withTrashed()->get();
         $prefs = Pref::all();
         $inputs = [
