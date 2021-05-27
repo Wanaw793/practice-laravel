@@ -26,7 +26,6 @@ class CustomersController extends Controller
     public function getIndex()
     {
         $customers = Customer::paginate(20);
-        $customers = Customer::withTrashed()->get();
         $prefs = Pref::all();
         $inputs = [
             'last_kana' => '',
