@@ -115,29 +115,8 @@
                         @endforeach
                     </tbody>
                 </table>
+                {{ $customers->links() }}
                 @endif
-                <div class="d-flex justify-content-left">
-                    <!-- ここからLaravelページネーターに差し替え -->
-                    <ul class="pagination" role="navigation">
-                        <li class="page-item">
-                            <a class="page-link" href="#" rel="prev" aria-label="&laquo; 前">&lsaquo;</a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item active" aria-current="page"><span class="page-link">3</span></li>
-                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                        <li class="page-item"><a class="page-link" href="#">5</a></li>
-                        <li class="page-item"><a class="page-link" href="#">6</a></li>
-                        <li class="page-item"><a class="page-link" href="#">7</a></li>
-                        <li class="page-item"><a class="page-link" href="#">8</a></li>
-                        <li class="page-item"><a class="page-link" href="#">9</a></li>
-                        <li class="page-item"><a class="page-link" href="#">10</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#" rel="next" aria-label="次 &raquo">&rsaquo;</a>
-                        </li>
-                    </ul>
-                    <!-- ここまでLaravelページネーターに差し替え -->
-                </div>
             </div>
         </div>
     </div>
