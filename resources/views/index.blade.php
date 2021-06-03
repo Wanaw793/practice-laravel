@@ -115,8 +115,8 @@
                         @endforeach
                     </tbody>
                 </table>
-                {{ $customers->links() }}
                 @endif
+                {{ $customers->appends($inputs)->links() }}
             </div>
         </div>
     </div>

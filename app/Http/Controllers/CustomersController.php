@@ -25,7 +25,7 @@ class CustomersController extends Controller
      */
     public function getIndex()
     {
-        $customers = Customer::paginate(20);
+        $customers = Customer::paginate(5);
         $prefs = Pref::all();
         $inputs = [
             'last_kana' => '',
@@ -37,7 +37,6 @@ class CustomersController extends Controller
         return view('index', ['customers' => $customers], ['prefs' => $prefs])->with('inputs', $inputs);
     }
 
-    //検索
     public function search(CustomerSearchRequest $request)
     {
         $inputs = $request->input();
@@ -67,13 +66,12 @@ class CustomersController extends Controller
             $query->where('pref_id', '=', $inputs['pref_id']);
         }
 
-        $customers = $query->get();
+        $customers = $query->paginate(5);
         $prefs = Pref::all();
 
         return view('index', ['customers' => $customers], ['prefs' => $prefs])->with('inputs', $inputs);
     }
 
-    //新規登録画面の表示
     public function create(Request $request)
     {
         $customers = Customer::all();
@@ -81,14 +79,12 @@ class CustomersController extends Controller
         return view('create', ['customers' => $customers], ['prefs' => $prefs]);
     }
 
-    //詳細画面の表示
     public function detail(Request $request)
     {
         $customer = Customer::findOrFail($request->id);
         return view('detail', ['customer' => $customer]);
     }
 
-    //編集画面の表示
     public function edit(Request $request)
     {
         $prefs = Pref::all();
